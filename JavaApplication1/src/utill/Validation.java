@@ -44,7 +44,6 @@ public class Validation {
         String total="[0-9][0-9]*([.][0-9]{1,2})?$";
 
         if (!salary.getDate().isEmpty()){
-            if (Pattern.matches(basic,String.valueOf(salary.getBasic()))){
                 if (Pattern.matches(otHours,String.valueOf(salary.getOtHours()))){
                     if (Pattern.matches(otRate,String.valueOf(salary.getOtRate()))){
                         if (Pattern.matches(total,String.valueOf(salary.getTotal()))){
@@ -58,9 +57,6 @@ public class Validation {
                 }else {
                     return "OT Hours";
                 }
-            }else {
-                return "Basic Salary";
-            }
         }else {
             return "Date";
         }

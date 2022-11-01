@@ -82,6 +82,7 @@ public class AddSalary extends javax.swing.JFrame {
         btnSearch = new javax.swing.JButton();
 
         txtName.setEditable(false);
+        txtBasicsalary.setEditable(false);
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/ISP logo.JPG"))); // NOI18N
@@ -117,7 +118,7 @@ public class AddSalary extends javax.swing.JFrame {
                     int otHoursRate=Integer.parseInt(txtOtRate.getText());
                     double total=Double.parseDouble(txtTotalSalary.getText());
 
-                    Salary salary = new Salary(otHours,otHoursRate,date,basic,total);
+                    Salary salary = new Salary(otHours,otHoursRate,date,total);
                     String s = Validation.checkSalaryInputs(salary);
 
                     if (s.equals("Done")){
@@ -196,6 +197,7 @@ public class AddSalary extends javax.swing.JFrame {
                         showMessageDialog(null, "No any records");
                     }else {
                         txtName.setText(employees.get(0).getName());
+                        txtBasicsalary.setText(String.valueOf(employees.get(0).getSalary()));
                     }
                 } catch (SQLException e) {
                     e.printStackTrace();

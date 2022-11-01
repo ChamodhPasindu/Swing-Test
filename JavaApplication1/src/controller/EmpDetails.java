@@ -118,7 +118,7 @@ public class EmpDetails extends javax.swing.JFrame {
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 try {
-                    List<Employee> employees = employeeRepo.searchEmployeeById(Integer.parseInt(txtSearchID.getText()));
+                    List<Employee> employees = employeeRepo.searchEmployeeDetailsById((Integer.parseInt(txtSearchID.getText())));
                     if (employees.isEmpty()){
                         showMessageDialog(null, "No Any Results");
                     }else {

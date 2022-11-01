@@ -9,6 +9,7 @@ import repo.JobRoleRepo;
 
 import javax.swing.*;
 import java.sql.SQLException;
+import java.util.regex.Pattern;
 
 import static javax.swing.JOptionPane.showMessageDialog;
 
@@ -82,16 +83,27 @@ public class JobRoles extends javax.swing.JFrame {
         btnAdd.setText("Add");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
+                double salary=12000.0;
 
-                try {
-                    boolean b = jobRoleRepo.addJobRole(txtJobRole.getText());
-                    if (b){
-                        showMessageDialog(null, "Job Role Added Successfully","Success", JOptionPane.INFORMATION_MESSAGE);
+                String basic="[0-9][0-9]*([.][0-9]{1,2})?$";
+                String role="[A-z]{3,}$";
+                if (Pattern.matches(role,txtJobRole.getText())){
+                    if (Pattern.matches(basic,String.valueOf(salary))){
+                        try {
+                            boolean b = jobRoleRepo.addJobRole(txtJobRole.getText(),salary);
+                            if (b){
+                                showMessageDialog(null, "Job Role Added Successfully","Success", JOptionPane.INFORMATION_MESSAGE);
+                            }else {
+                                showMessageDialog(null, "Something Wrong! Try Again Later","Error", JOptionPane.ERROR_MESSAGE);
+                            }
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }
                     }else {
-                        showMessageDialog(null, "Something Wrong! Try Again Later","Error", JOptionPane.ERROR_MESSAGE);
+                        showMessageDialog(null, "Basic Salary should be contain only numbers","Error", JOptionPane.ERROR_MESSAGE);
                     }
-                } catch (SQLException e) {
-                    e.printStackTrace();
+                }else {
+                    showMessageDialog(null, "Job Role should be contain only alphabetic characters","Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });

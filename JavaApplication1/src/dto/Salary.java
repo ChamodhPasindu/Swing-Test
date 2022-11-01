@@ -4,27 +4,18 @@ public class Salary {
     private int otHours;
     private int otRate;
     private String date;
-    private double basic;
     private double total;
 
-    public Salary(int otHours, int otRate, String date, double basic, double total) {
+    public Salary(int otHours, int otRate, String date, double total) {
         this.otHours = otHours;
         this.otRate = otRate;
         this.date = date;
-        this.basic = basic;
         this.total = total;
     }
 
     public Salary() {
     }
 
-    public void setBasic(double basic) {
-        this.basic = basic;
-    }
-
-    public double getBasic() {
-        return basic;
-    }
 
     public int getOtHours() {
         return otHours;
@@ -64,7 +55,6 @@ public class Salary {
                 "otHours=" + otHours +
                 ", otRate=" + otRate +
                 ", date='" + date + '\'' +
-                ", basic=" + basic +
                 ", total=" + total +
                 '}';
     }

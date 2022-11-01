@@ -14,6 +14,7 @@ CREATE TABLE IF NOT EXISTS employee(
 CREATE TABLE IF NOT EXISTS jobRole(
     jobID INT NOT NULL AUTO_INCREMENT,
     jobRole VARCHAR(50),
+    basic DECIMAL(8,2),
     CONSTRAINT PRIMARY KEY (jobID)
     );
 
@@ -23,7 +24,6 @@ CREATE TABLE IF NOT EXISTS salary(
     otHours INT ,
     otRate INT,
     date VARCHAR (100),
-    basic DECIMAL(8,2),
     total DECIMAL (8,2),
     CONSTRAINT PRIMARY KEY (salaryID),
     CONSTRAINT FOREIGN KEY (empID) REFERENCES employee (empID) ON DELETE CASCADE ON UPDATE CASCADE

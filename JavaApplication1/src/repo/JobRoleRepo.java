@@ -25,11 +25,12 @@ public class JobRoleRepo {
         }
     }
 
-    public boolean addJobRole(String role) throws SQLException {
+    public boolean addJobRole(String role,double salary) throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
-        String query="INSERT INTO jobRole (jobRole) VALUES (?)";
+        String query="INSERT INTO jobRole (jobRole,basic) VALUES (?,?)";
         PreparedStatement stm = connection.prepareStatement(query);
         stm.setObject(1,role);
+        stm.setObject(2,salary);
         return stm.executeUpdate()>0;
     }
 

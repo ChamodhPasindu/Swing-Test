@@ -81,6 +81,7 @@ public class SalaryDetails extends javax.swing.JFrame {
         jLabel23 = new javax.swing.JLabel();
 
         txtName.setEditable(false);
+        txtBasicSalary.setEditable(false);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -136,7 +137,7 @@ public class SalaryDetails extends javax.swing.JFrame {
                     double basic=Double.parseDouble(txtBasicSalary.getText());
                     double total=Double.parseDouble(txtTotalaSalary.getText());
 
-                    Salary salary = new Salary(otHours, otRate, date, basic, total);
+                    Salary salary = new Salary(otHours, otRate, date, total);
                     String s = Validation.checkSalaryInputs(salary);
                     if (s.equals("Done")){
                         try {
@@ -196,7 +197,7 @@ public class SalaryDetails extends javax.swing.JFrame {
                         if (salary==null){
                             showMessageDialog(null, "You should add employee salary before update","Error", JOptionPane.ERROR_MESSAGE);
                         }else {
-                            txtBasicSalary.setText(String.valueOf(salary.getBasic()));
+                            txtBasicSalary.setText(String.valueOf(employees.get(0).getSalary()));
                             txtOtHours.setText(String.valueOf(salary.getOtHours()));
                             txtOtRate.setText(String.valueOf(salary.getOtRate()));
                             txtTotalaSalary.setText(String.valueOf(salary.getTotal()));

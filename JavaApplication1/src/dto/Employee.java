@@ -8,7 +8,14 @@ public class Employee {
     String address;
     String jobRole;
 
+    double salary;
+
     public Employee() {
+    }
+
+    public Employee( String name, double salary) {
+        this.name = name;
+        this.salary = salary;
     }
 
     public Employee(String name, String phone, String email, String address, String jobRole) {
@@ -28,6 +35,13 @@ public class Employee {
         this.jobRole = jobRole;
     }
 
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
 
     public String getNic() {
         return nic;
