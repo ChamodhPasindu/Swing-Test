@@ -54,7 +54,7 @@ public class SalaryReport extends javax.swing.JFrame {
         try {
             List<Custom> allSalaryDetail = employeeRepo.getAllSalaryDetail();
             for (Custom s:allSalaryDetail) {
-                Object[] row={s.getNic(),s.getName(),s.getOtHours(),s.getOtRate(),s.getDate(),s.getTotal()};
+                Object[] row={s.getEmpId(),s.getNic(),s.getName(),s.getOtHours(),s.getOtRate(),s.getDate(),s.getBasic(),s.getTotal()};
                 DefaultTableModel model = (DefaultTableModel) tblSalaryReport.getModel();
                 model.addRow(row);
             }
@@ -86,7 +86,7 @@ public class SalaryReport extends javax.swing.JFrame {
 
             },
             new String [] {
-                "NIC", "Name", "OT Hours", "OT Rate","Date","Total"
+                "Emp ID","NIC", "Name", "OT Hours", "OT Rate","Date","Basic","Total"
             }
         ));
         jScrollPane1.setViewportView(tblSalaryReport);

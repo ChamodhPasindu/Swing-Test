@@ -119,7 +119,7 @@ public class EmployeeRepo {
 
     public List<Custom> getAllSalaryDetail() throws SQLException {
         Connection connection = DbConnection.getInstance().getConnection();
-        String sql="SELECT e.nic,e.name,s.otHours,s.otRate,s.date,s.total FROM employee e INNER JOIN salary s ON e.empID=s.empId ";
+        String sql="SELECT e.empId,e.nic,e.name,s.otHours,s.otRate,s.date,s.total,r.basic FROM employee e INNER JOIN salary s ON e.empID=s.empId JOIN jobRole r ON r.jobRole=e.jobRole";
         PreparedStatement stm = connection.prepareStatement(sql);
         ResultSet resultSet = stm.executeQuery();
         ArrayList<Custom> customs = new ArrayList<>();
@@ -127,10 +127,13 @@ public class EmployeeRepo {
             customs.add(new Custom(
                     resultSet.getString(1),
                     resultSet.getString(2),
-                    resultSet.getInt(3),
+                    resultSet.getString(3),
                     resultSet.getInt(4),
-                    resultSet.getString(5),
-                    resultSet.getDouble(6)
+                    resultSet.getInt(5),
+                    resultSet.getString(6),
+                    resultSet.getDouble(7),
+                    resultSet.getDouble(8)
+
             ));
         }
         return customs;
